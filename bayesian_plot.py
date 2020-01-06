@@ -158,8 +158,9 @@ def save_fit_summary(results_pd, prefix='', iter_stable = iter_stable_default,
     text = 'Bayesian fitting\n\n'
     if fitted_func:
         text += 'Function fitted:\n'
-        text += fitted_func.__doc__
-        text += '\n'
+        if fitted_func.__doc__ is not None:
+            text += fitted_func.__doc__
+            text += '\n'
     if n_walkers:
         text += 'Number of walkers: {}\n'.format(n_walkers)
     if n_iterations:
