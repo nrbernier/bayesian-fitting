@@ -4,7 +4,7 @@ The functions should have exactly two arguments, the first is the input to the f
 """
 
 def lorentzian(f, params):
-    """Lorentzian
+    """Lorentzian:
     params = f0, a, w, c
     f0: resonance frequency
     a: amplitude of the lorentzian
@@ -15,6 +15,14 @@ def lorentzian(f, params):
     return c+a* (w/2.)**2/ ((f-f0)**2 + (w/2.)**2)
 
 def double_lorentzian(f, params):
+    """Double lorentzian:
+    params = f0_1, a_1, w_1, deltaf, a_2, w_2, c
+    f0_1: resonance frequency of peak 1
+    deltaf: difference in frequency between two peaks`
+    a_i: amplitude of the peak i
+    w_i: width of peak i
+    c: background level
+    """
     f0_1, a_1, w_1, deltaf, a_2, w_2, c = params
     lor1 = a_1* (w_1/2.)**2/ ((f-f0_1)**2 + (w_1/2.)**2)
     lor2 = a_2* (w_2/2.)**2/ ((f-(f0_1+deltaf))**2 + (w_2/2.)**2)
